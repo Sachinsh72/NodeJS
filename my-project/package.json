@@ -1,0 +1,22 @@
+{
+  "name": "my-project-by-package.json",
+  "version": "1.0.1",
+  "description": "this project is created by npm init command and provided all the detail in terminal",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run text"
+  },
+  "keywords": [
+    "package",
+    "json",
+    "terminal"
+  ],
+  "author": "Sachin sharma",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^18.2.0"
+  },
+  "devDependencies": {
+    "react-script": "^2.0.5"
+  }
+}
