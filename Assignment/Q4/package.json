@@ -1,0 +1,14 @@
+{
+  "name": "q4",
+  "version": "1.0.0",
+  "description": "Append files",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run"
+  },
+  "keywords": [
+    "Q4"
+  ],
+  "author": "Sachin Sharma",
+  "license": "ISC"
+}

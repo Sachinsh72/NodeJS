@@ -1,0 +1,14 @@
+{
+  "name": "q5",
+  "version": "1.0.0",
+  "description": "Delete files",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run"
+  },
+  "keywords": [
+    "Q5"
+  ],
+  "author": "Sachin Sharma",
+  "license": "ISC"
+}

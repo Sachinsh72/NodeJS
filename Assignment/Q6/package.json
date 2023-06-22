@@ -1,0 +1,14 @@
+{
+  "name": "q6",
+  "version": "1.0.0",
+  "description": "Name of OS and release by program.",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run"
+  },
+  "keywords": [
+    "Q6"
+  ],
+  "author": "Sachin sharma",
+  "license": "ISC"
+}

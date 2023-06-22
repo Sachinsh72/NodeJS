@@ -1,0 +1,16 @@
+{
+  "name": "q1",
+  "version": "1.0.0",
+  "description": "package.json has been created by npm init",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run"
+  },
+  "keywords": [
+    "q1",
+    "Q1",
+    "Assignment"
+  ],
+  "author": "Sachin sharma",
+  "license": "ISC"
+}

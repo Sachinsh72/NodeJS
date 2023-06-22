@@ -1,0 +1,14 @@
+{
+  "name": "q2-q3",
+  "version": "1.0.0",
+  "description": "using the fs module add information about Node&js architecture to a new file nodejs_architecture.txt and data is reading in console",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run"
+  },
+  "keywords": [
+    "Q2,Q3"
+  ],
+  "author": "Sachin sharma",
+  "license": "ISC"
+}
