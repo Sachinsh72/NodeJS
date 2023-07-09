@@ -1,6 +1,5 @@
 # User Management Backend 
-Design a user management backend system using ExpressAjs and MongoDB, allo0ing users to
-register and login account
+Design a user management backend system using Express js and MongoDB, alloing users to register and login account
 
 ## Features
 - User Registration
