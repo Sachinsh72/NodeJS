@@ -4,29 +4,32 @@ const emailValidator = require("email-validator");
 const signup = async (req,res,next) =>{
     const { name, email, password, confirmPassword }= req.body;
     
+    //every field is required
     if(!name || !email || !password || !confirmPassword){
         return res.status(400).json({
-            success: true,
+            success: false,
             message: "Every field is required"
         })
     }
 
+    //validate email using npm package "email-validator"
     const validEmail = emailValidator.validate(email);
     if(!validEmail){
         return res.status(400).json({
             success: false,
             message: "Please provide a valid email id"
         })
-
-        if(password !== confirmPassword){
+    }
+    try {
+        //send password not match err if password !== confirmPassword
+        if(password != confirmPassword){
             return res.status(400).json({
                 success: false,
                 message: "Password and confirm password doesn't match"
             })
-
         }
-    }
-    try {
+
+        //UserSchema "pre" middleware function for "save" will hash the  password using "bcrypt" (npm package) before saving the data into the database
         //user model instance
         const userInfo = userModel(req.body)
         const result = await userInfo.save();
@@ -43,7 +46,6 @@ const signup = async (req,res,next) =>{
                 message: 'account already exist with provided email'
             })
         }
-
         return res.status(400).json({
             success: false,
             message: e.message
@@ -56,6 +58,7 @@ const signup = async (req,res,next) =>{
 const signin = async (req,res) => {
     const {email,password} = req.body;
 
+    //return response with an error message if the email of password is missing
     if (!email || !password){
         return res.status(400).json({
             success: false,
@@ -63,27 +66,40 @@ const signin = async (req,res) => {
         })
     }
 
-    const user = await userModel.findOne({
-        email
-    })
-    .select('+password');
-
-    if(!user || user.password === password){
-        return res.status(400).json({
+    try {
+        const user = await userModel.findOne({
+            email,password
+        })
+        .select('+password');
+    
+        if(!user || user.password !== password){
+            return res.status(400).json({
+                success: false,
+                message: "Invalid credentails"
+            })
+        }
+    
+        //create the JWT token using the userSchema method (jwtToken())
+        const token = user.jwtToken();
+        user.password = undefined;
+    
+        const cookieOption = {
+            maxAge : 24*60 * 60 *1000,
+            httpOnly: true
+        };
+    
+        //return a response with user object and cookie ( contains jwt Token)
+        res.cookie("token",token, cookieOption);
+        res.status(200).json({
+            success: true,
+            data: user
+        })
+    } catch (e) {
+        res.status(400).json({
             success: false,
-            message: "Invalid credentails"
+            message : e.message
         })
     }
-
-    const token = user.jwtToken();
-    user.password = undefined;
-
-    const cookieOption = {
-        maxAge : 24*60 * 60 *1000,
-        httpOnly: true
-    };
-
-    res.c
 }
 
 module.exports = {
