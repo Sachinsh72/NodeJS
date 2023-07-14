@@ -3,11 +3,13 @@ const express = require('express');
 const app = express();
 const authRouter = require('./router/autheRoute');  //import authRouter
 const databaseconnect = require('./config/databaseConfig');    //import database 
+const cookieParser = require('cookie-parser');
 
 databaseconnect();   //database call
 
 //for parse
 app.use(express.json());
+app.use(cookieParser());
 // app.use(bodyParser.json()) // for parsing application/json
 // app.use(bodyParser.urlencoded({ extended: true }))
 app.use('/api/auth',authRouter);
