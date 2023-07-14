@@ -103,6 +103,7 @@ const signin = async (req,res) => {
     }
 }
 
+//getuser
 const getUser = async (req,res,next) => {
     const userId = req.user.id;
 
@@ -120,7 +121,7 @@ const getUser = async (req,res,next) => {
     }
 
 }
-
+//logout
 const logout = (req, res) => {
 
     try {
